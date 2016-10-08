@@ -16,7 +16,7 @@ namespace szyfr_plotowy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_RailFenceCyfer());
+            Application.Run(new frm_RailFenceCyfer(new RailCipher()));
         }
     }
 }

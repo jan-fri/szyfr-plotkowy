@@ -6,37 +6,9 @@ using System.Threading.Tasks;
 
 namespace szyfr_plotowy
 {
-    delegate string Cipher(int rail, string text);
-    public static class RailCipher
+    public class RailCipher : IRailCipher
     {
-        public static string Encrypt(int rail, string plainText)
-        {
-            List<StringBuilder> cipher = new List<StringBuilder>();
-            for (int i = 0; i < rail; i++)
-                cipher.Add(new StringBuilder());
-
-            int line = 0;
-            int increment = 1;
-            foreach (char p in plainText)
-            {
-                cipher[line].Append(p);
-
-                if (line == 0)
-                    increment = 1;
-                else if (line == rail - 1)
-                    increment = -1;
-
-                line += increment;
-            }
-            StringBuilder cipherText = new StringBuilder();
-            
-            foreach (var c in cipher)
-                cipherText.Append(c);
-
-            return cipherText.ToString();
-        }
-
-        public static string Decrypt(int rail, string cipherText)
+        public string Decrypt(int rail, string cipherText)
         {
             int cipherLength = cipherText.Length;
             List<List<int>> railFence = new List<List<int>>();
@@ -69,6 +41,34 @@ namespace szyfr_plotowy
             }
 
             return new string(plainText);
+        }
+    
+
+        public string Encrypt(int rail, string plainText)
+        {
+            List<StringBuilder> cipher = new List<StringBuilder>();
+            for (int i = 0; i < rail; i++)
+                cipher.Add(new StringBuilder());
+
+            int line = 0;
+            int increment = 1;
+            foreach (char p in plainText)
+            {
+                cipher[line].Append(p);
+
+                if (line == 0)
+                    increment = 1;
+                else if (line == rail - 1)
+                    increment = -1;
+
+                line += increment;
+            }
+            StringBuilder cipherText = new StringBuilder();
+
+            foreach (var c in cipher)
+                cipherText.Append(c);
+
+            return cipherText.ToString();
         }
     }
 }

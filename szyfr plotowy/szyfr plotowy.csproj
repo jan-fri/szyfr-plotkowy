@@ -52,6 +52,7 @@
     <Compile Include="frm_RailFenceCyfer.Designer.cs">
       <DependentUpon>frm_RailFenceCyfer.cs</DependentUpon>
     </Compile>
+    <Compile Include="IRailCipher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RailCipher.cs" />
